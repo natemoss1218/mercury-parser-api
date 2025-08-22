@@ -8,9 +8,10 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const result = await Mercury.parse(url);
+    const result = await Mercury.parse(url, { contentType: 'html' });
     res.status(200).json(result);
   } catch (err) {
+    console.error('Mercury error:', err.message);
     res.status(500).json({ error: err.message });
   }
 };

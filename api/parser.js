@@ -1,4 +1,5 @@
 const Mercury = require('@postlight/mercury-parser');
+const fetch = require('node-fetch'); // <--- add this line
 
 module.exports = async (req, res) => {
   const { url } = req.query;
@@ -31,7 +32,6 @@ module.exports = async (req, res) => {
       }
     }
 
-    // Always return the parsed result to the caller
     res.status(200).json(result);
   } catch (err) {
     console.error('Mercury error:', err.message);
